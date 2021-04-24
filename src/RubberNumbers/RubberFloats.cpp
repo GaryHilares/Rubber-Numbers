@@ -1,8 +1,8 @@
-#include "../../include/RubberFloats/RubberFloats.hpp"
+#include "../../include/RubberNumbers/RubberFloats.hpp"
 #include <vector>
 #include <cmath>
 
-bool RubberFloats::RubberFloat::isValidInput(const std::string& str)
+bool RubberNumbers::RubberFloat::isValidInput(const std::string& str)
 {
     if(str.size() == 0 || str == "-" || str == "." || str == "-.")
         return false;
@@ -20,7 +20,7 @@ bool RubberFloats::RubberFloat::isValidInput(const std::string& str)
     return true;
 }
 
-void RubberFloats::RubberFloat::deleteTrailingZeroes()
+void RubberNumbers::RubberFloat::deleteTrailingZeroes()
 {
     for(std::string::size_type i = 0; i < this->integral_val.size(); i++)
     {
@@ -40,14 +40,14 @@ void RubberFloats::RubberFloat::deleteTrailingZeroes()
     }
 }
 
-RubberFloats::RubberFloat::RubberFloat()
+RubberNumbers::RubberFloat::RubberFloat()
 {
     this->is_negative = false;
     this->integral_val = "0";
     this->decimal_val = "0";
 }
 
-RubberFloats::RubberFloat::RubberFloat(const std::string& new_val)
+RubberNumbers::RubberFloat::RubberFloat(const std::string& new_val)
 {
     if(!isValidInput(new_val))
         throw std::invalid_argument("RubberFloat::RubberFloat(" + new_val + ")");
@@ -71,18 +71,18 @@ RubberFloats::RubberFloat::RubberFloat(const std::string& new_val)
     this->deleteTrailingZeroes();
 }
 
-std::string RubberFloats::RubberFloat::to_string() const
+std::string RubberNumbers::RubberFloat::to_string() const
 {
     return (is_negative ? "-":"") + integral_val + "." + decimal_val;
 }
 
-std::ostream& RubberFloats::operator<<(std::ostream& stream, const RubberFloat& num)
+std::ostream& RubberNumbers::operator<<(std::ostream& stream, const RubberFloat& num)
 {
     stream << num.to_string();
     return stream;
 }
 
-std::istream& RubberFloats::operator>>(std::istream& stream, RubberFloat& num)
+std::istream& RubberNumbers::operator>>(std::istream& stream, RubberFloat& num)
 {
     std::string check_str;
     stream >> check_str;
@@ -90,24 +90,24 @@ std::istream& RubberFloats::operator>>(std::istream& stream, RubberFloat& num)
     return stream;
 }
 
-bool RubberFloats::RubberFloat::operator==(const RubberFloat& num2) const
+bool RubberNumbers::RubberFloat::operator==(const RubberFloat& num2) const
 {
     return this->is_negative == num2.is_negative && this->integral_val == num2.integral_val && this->decimal_val == num2.decimal_val;
 }
 
-bool RubberFloats::RubberFloat::operator!=(const RubberFloat& num2) const
+bool RubberNumbers::RubberFloat::operator!=(const RubberFloat& num2) const
 {
     return !(*this == num2);
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::abs() const
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::abs() const
 {
     RubberFloat ret = *this;
     ret.is_negative = false;
     return ret;
 }
 
-bool RubberFloats::RubberFloat::operator>(const RubberFloat& num2) const
+bool RubberNumbers::RubberFloat::operator>(const RubberFloat& num2) const
 {
     if(this->is_negative != num2.is_negative)
         return !this->is_negative;
@@ -136,22 +136,22 @@ bool RubberFloats::RubberFloat::operator>(const RubberFloat& num2) const
     throw std::invalid_argument("RubberFloat::operator>(Impossible result)");
 }
 
-bool RubberFloats::RubberFloat::operator<(const RubberFloat& num2) const
+bool RubberNumbers::RubberFloat::operator<(const RubberFloat& num2) const
 {
     return !((*this > num2) || (*this == num2));
 }
 
-bool RubberFloats::RubberFloat::operator>=(const RubberFloat& num2) const
+bool RubberNumbers::RubberFloat::operator>=(const RubberFloat& num2) const
 {
     return (*this == num2) || (*this > num2);
 }
 
-bool RubberFloats::RubberFloat::operator<=(const RubberFloat& num2) const
+bool RubberNumbers::RubberFloat::operator<=(const RubberFloat& num2) const
 {
     return (*this == num2) || (*this < num2);
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator+(const RubberFloat& num2) const
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator+(const RubberFloat& num2) const
 {
     if(this->is_negative == num2.is_negative)
     {
@@ -252,52 +252,52 @@ RubberFloats::RubberFloat RubberFloats::RubberFloat::operator+(const RubberFloat
     }
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator +=(const RubberFloat& num2)
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator +=(const RubberFloat& num2)
 {
     *this = *this + num2;
     return *this;
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator-(const RubberFloat& num2) const
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator-(const RubberFloat& num2) const
 {
     RubberFloat tmp = num2;
     tmp.is_negative = !tmp.is_negative;
     return *this + tmp;
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator -=(const RubberFloat& num2)
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator -=(const RubberFloat& num2)
 {
     *this = *this - num2;
     return *this;
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator++(int)
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator++(int)
 {
     RubberFloat tmp = *this;
     *this += RubberFloat(1);
     return tmp;
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator--(int)
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator--(int)
 {
     RubberFloat tmp = *this;
     *this -= RubberFloat(1);
     return tmp;
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator++()
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator++()
 {
     *this += RubberFloat(1);
     return *this;
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator--()
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator--()
 {
     *this -= 1;
     return *this;
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator*(const RubberFloat& num2) const
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator*(const RubberFloat& num2) const
 {
     if((this->integral_val == "0" && this->decimal_val == "0") || (num2.integral_val == "0" && num2.decimal_val == "0"))
         return RubberFloat(0);
@@ -330,13 +330,13 @@ RubberFloats::RubberFloat RubberFloats::RubberFloat::operator*(const RubberFloat
     return answer;
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator*=(const RubberFloat& num2)
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator*=(const RubberFloat& num2)
 {
     *this = *this * num2;
     return *this;
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator/(const RubberFloat& num2) const
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator/(const RubberFloat& num2) const
 {
     unsigned int maxDecimalsNow = std::max(this->decimal_val.size(),num2.decimal_val.size()) - (this->decimal_val == "0" && num2.decimal_val == "0");
     const RubberFloat dividend = (this->abs() * pow(10,maxDecimalsNow));
@@ -382,13 +382,13 @@ RubberFloats::RubberFloat RubberFloats::RubberFloat::operator/(const RubberFloat
     return RubberFloat(cocient);
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator/=(const RubberFloat& num2)
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator/=(const RubberFloat& num2)
 {
     *this = *this / num2;
     return *this;
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator%(const RubberFloat& num2) const
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator%(const RubberFloat& num2) const
 {
     unsigned int max_decimals_now = std::max(this->decimal_val.size(),num2.decimal_val.size()) - (this->decimal_val == "0" && num2.decimal_val == "0");
     const RubberFloat dividend = (this->abs() * RubberFloat(pow(10,max_decimals_now)));
@@ -417,13 +417,13 @@ RubberFloats::RubberFloat RubberFloats::RubberFloat::operator%(const RubberFloat
     return RubberFloat(0);
 }
 
-RubberFloats::RubberFloat RubberFloats::RubberFloat::operator%=(const RubberFloat& num2)
+RubberNumbers::RubberFloat RubberNumbers::RubberFloat::operator%=(const RubberFloat& num2)
 {
     *this = *this % num2;
     return *this;
 }
 
-unsigned int RubberFloats::RubberFloat::setPrecision(unsigned int new_precision)
+unsigned int RubberNumbers::RubberFloat::setPrecision(unsigned int new_precision)
 {
     static unsigned int precision = 10;
     if(new_precision == 0)
@@ -437,7 +437,7 @@ unsigned int RubberFloats::RubberFloat::setPrecision(unsigned int new_precision)
     }
 }
 
-unsigned int RubberFloats::RubberFloat::getPrecision()
+unsigned int RubberNumbers::RubberFloat::getPrecision()
 {
     return setPrecision(0);
 }

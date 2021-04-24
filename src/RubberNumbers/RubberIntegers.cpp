@@ -1,7 +1,7 @@
-#include "../../include/RubberIntegers/RubberIntegers.hpp"
+#include "../../include/RubberNumbers/RubberIntegers.hpp"
 #include <vector>
 
-bool RubberIntegers::RubberInt::isValidInput(const std::string& str)
+bool RubberNumbers::RubberInt::isValidInput(const std::string& str)
 {
     if(str.size() == 0 || str == "-")
         return false;
@@ -11,7 +11,7 @@ bool RubberIntegers::RubberInt::isValidInput(const std::string& str)
     return true;
 }
 
-void RubberIntegers::RubberInt::deleteTrailingZeroes()
+void RubberNumbers::RubberInt::deleteTrailingZeroes()
 {
     for(unsigned int i = 0; i < this->val.size(); i++)
     {
@@ -23,13 +23,13 @@ void RubberIntegers::RubberInt::deleteTrailingZeroes()
     }
 }
 
-RubberIntegers::RubberInt::RubberInt()
+RubberNumbers::RubberInt::RubberInt()
 {
     this->isNegative = false;
     this->val = "0";
 }
 
-RubberIntegers::RubberInt::RubberInt(const std::string& newVal)
+RubberNumbers::RubberInt::RubberInt(const std::string& newVal)
 {
     if(!isValidInput(newVal))
         throw std::invalid_argument("RubberInt::RubberInt(" + newVal + ")");
@@ -38,18 +38,18 @@ RubberIntegers::RubberInt::RubberInt(const std::string& newVal)
     this->deleteTrailingZeroes();
 }
 
-std::string RubberIntegers::RubberInt::toString() const
+std::string RubberNumbers::RubberInt::toString() const
 {
     return this->isNegative ? ("-" + this->val):(this->val);
 }
 
-std::ostream& RubberIntegers::operator<<(std::ostream& stream, const RubberInt& num)
+std::ostream& RubberNumbers::operator<<(std::ostream& stream, const RubberInt& num)
 {
     stream << num.toString();
     return stream;
 }
 
-std::istream& RubberIntegers::operator>>(std::istream& stream, RubberInt& num)
+std::istream& RubberNumbers::operator>>(std::istream& stream, RubberInt& num)
 {
     std::string checkStr;
     stream >> checkStr;
@@ -57,17 +57,17 @@ std::istream& RubberIntegers::operator>>(std::istream& stream, RubberInt& num)
     return stream;
 }
 
-bool RubberIntegers::RubberInt::operator==(const RubberInt& num2) const
+bool RubberNumbers::RubberInt::operator==(const RubberInt& num2) const
 {
     return (this->isNegative == num2.isNegative) && (this->val == num2.val);
 }
 
-bool RubberIntegers::RubberInt::operator!=(const RubberInt& num2) const
+bool RubberNumbers::RubberInt::operator!=(const RubberInt& num2) const
 {
     return !(*this == num2);
 }
 
-bool RubberIntegers::RubberInt::operator>(const RubberInt& num2) const
+bool RubberNumbers::RubberInt::operator>(const RubberInt& num2) const
 {
     if(this->isNegative && !num2.isNegative)
     {
@@ -123,20 +123,20 @@ bool RubberIntegers::RubberInt::operator>(const RubberInt& num2) const
     }
     throw std::invalid_argument("RubberInt::operator>(Not possible case)");
 }
-bool RubberIntegers::RubberInt::operator<=(const RubberInt& num2) const
+bool RubberNumbers::RubberInt::operator<=(const RubberInt& num2) const
 {
     return *this == num2 || *this < num2;
 }
-bool RubberIntegers::RubberInt::operator>=(const RubberInt& num2) const
+bool RubberNumbers::RubberInt::operator>=(const RubberInt& num2) const
 {
     return *this == num2 || *this > num2;
 }
-bool RubberIntegers::RubberInt::operator<(const RubberInt& num2) const
+bool RubberNumbers::RubberInt::operator<(const RubberInt& num2) const
 {
     return !(*this == num2 || *this > num2);
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator+(const RubberInt& num2) const
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator+(const RubberInt& num2) const
 {
     if(this->isNegative == num2.isNegative)
     {
@@ -195,52 +195,52 @@ RubberIntegers::RubberInt RubberIntegers::RubberInt::operator+(const RubberInt& 
     }
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator-(const RubberInt& num2) const
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator-(const RubberInt& num2) const
 {
     RubberInt invertedSignNum2(num2);
     invertedSignNum2.isNegative = !invertedSignNum2.isNegative;
     return *this + invertedSignNum2;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator+=(const RubberInt& num2)
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator+=(const RubberInt& num2)
 {
     *this = *this + num2;
     return *this;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator-=(const RubberInt& num2)
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator-=(const RubberInt& num2)
 {
     *this = *this - num2;
     return *this;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator++(int)
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator++(int)
 {
     RubberInt ret = *this;
     *this = *this + RubberInt(1);
     return ret;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator++()
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator++()
 {
     *this = *this + 1;
     return *this;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator--(int)
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator--(int)
 {
     RubberInt ret = *this;
     *this = *this - RubberInt(1);
     return ret;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator--()
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator--()
 {
     *this = *this - RubberInt(1);
     return *this;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator*(const RubberInt& num2) const
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator*(const RubberInt& num2) const
 {
     if(this->val == "0" || num2.val == "0")
         return RubberInt(0);
@@ -268,13 +268,13 @@ RubberIntegers::RubberInt RubberIntegers::RubberInt::operator*(const RubberInt& 
     return answer;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator*=(const RubberInt& num2)
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator*=(const RubberInt& num2)
 {
     *this = *this * num2;
     return *this;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator/(const RubberInt& num2) const
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator/(const RubberInt& num2) const
 {
     const RubberInt dividend = this->abs();
     const RubberInt divisor = num2.abs();
@@ -308,13 +308,13 @@ RubberIntegers::RubberInt RubberIntegers::RubberInt::operator/(const RubberInt& 
     return RubberInt(cocient);
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator/=(const RubberInt& num2)
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator/=(const RubberInt& num2)
 {
     *this = *this / num2;
     return *this;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator%(const RubberInt& num2) const
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator%(const RubberInt& num2) const
 {
     const RubberInt dividend = this->abs();
     const RubberInt divisor = num2.abs();
@@ -342,13 +342,13 @@ RubberIntegers::RubberInt RubberIntegers::RubberInt::operator%(const RubberInt& 
     return remainder;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::operator%=(const RubberInt& num2)
+RubberNumbers::RubberInt RubberNumbers::RubberInt::operator%=(const RubberInt& num2)
 {
     *this = *this % num2;
     return *this;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::factorial() const
+RubberNumbers::RubberInt RubberNumbers::RubberInt::factorial() const
 {
     if(this->isNegative)
         throw std::invalid_argument("RubberInt::factorial(" + this->val + ")");
@@ -360,14 +360,14 @@ RubberIntegers::RubberInt RubberIntegers::RubberInt::factorial() const
     return result;
 }
 
-RubberIntegers::RubberInt RubberIntegers::RubberInt::abs() const
+RubberNumbers::RubberInt RubberNumbers::RubberInt::abs() const
 {
     if(!this->isNegative)
         return *this;
     return RubberInt(this->val);
 }
 
-std::string std::to_string(const RubberIntegers::RubberInt& num)
+std::string std::to_string(const RubberNumbers::RubberInt& num)
 {
     return num.toString();
 }

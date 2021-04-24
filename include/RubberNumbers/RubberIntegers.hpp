@@ -31,7 +31,7 @@
 #include <iostream>
 #include <string>
 
-namespace RubberIntegers
+namespace RubberNumbers
 {
     class RubberInt
     {
@@ -79,6 +79,6 @@ namespace RubberIntegers
 #ifndef RUBBER_INTEGERS__DO_NOT_SPECIALIZE_STANDARD_LIBRARY
 namespace std
 {
-    string to_string(const RubberIntegers::RubberInt& num);
+    string to_string(const RubberNumbers::RubberInt& num);
 }
 #endif // RUBBER_INTEGERS__DO_NOT_SPECIALIZE_STANDARD_LIBRARY

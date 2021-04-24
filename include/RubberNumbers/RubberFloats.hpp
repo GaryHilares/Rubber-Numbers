@@ -32,7 +32,7 @@
 #include <iostream>
 #include <string>
 
-namespace RubberFloats
+namespace RubberNumbers
 {
     class RubberFloat
     {
