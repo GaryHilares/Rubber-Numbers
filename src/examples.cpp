@@ -8,6 +8,6 @@ int main()
     std::cout << test1;
     RubberFloat test2(RubberFloat(45.4));
     test2 = test2 * RubberFloat(-69);
-    std::cout << test1;
+    std::cout << test2;
 
 }
