@@ -5,7 +5,7 @@
 [![badge-contributors](https://img.shields.io/github/contributors/GaryNLOL/Rubber-Numbers?style=for-the-badge)](https://github.com/GaryNLOL/Rubber-Numbers/graphs/contributors)
 [![badge-codesize](https://img.shields.io/github/languages/code-size/GaryNLOL/Rubber-Numbers?style=for-the-badge)](https://github.com/GaryNLOL/Rubber-Numbers)
 
-## What is Rubber Integers?
+## What is Rubber Numbers?
 Rubber Numbers is an arbitrary integer size support library for C++.
 
 ### Features
