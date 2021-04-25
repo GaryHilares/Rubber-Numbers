@@ -441,3 +441,8 @@ unsigned int RubberNumbers::RubberFloat::getPrecision()
 {
     return setPrecision(0);
 }
+
+std::string std::to_string(const RubberNumbers::RubberFloat& num)
+{
+    return num.to_string();
+}

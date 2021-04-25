@@ -76,7 +76,7 @@ namespace RubberNumbers
     std::istream& operator>>(std::istream& stream, RubberInt& num);
 }
 
-#ifndef RUBBER_INTEGERS__DO_NOT_SPECIALIZE_STANDARD_LIBRARY
+#ifndef RUBBER_NUMBERS__DO_NOT_SPECIALIZE_STANDARD_LIBRARY
 namespace std
 {
     string to_string(const RubberNumbers::RubberInt& num);

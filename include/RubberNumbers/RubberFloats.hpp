@@ -78,3 +78,10 @@ namespace RubberNumbers
     std::istream& operator>>(std::istream& stream, RubberFloat& num);
     std::ostream& operator<<(std::ostream& stream, const RubberFloat& num);
 }
+
+#ifndef RUBBER_NUMBERS__DO_NOT_SPECIALIZE_STANDARD_LIBRARY
+namespace std
+{
+    string to_string(const RubberNumbers::RubberFloat& num);
+}
+#endif // RUBBER_INTEGERS__DO_NOT_SPECIALIZE_STANDARD_LIBRARY
