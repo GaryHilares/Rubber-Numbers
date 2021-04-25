@@ -1,10 +1,12 @@
 <h1 align="center">Rubber Numbers</h1>
 
-[![badge-lastcommit](https://img.shields.io/github/last-commit/GaryNLOL/Rubber-Numbers?style=for-the-badge)](https://github.com/GaryNLOL/Rubber-Numbers/commits/main)
-[![badge-openissues](https://img.shields.io/github/issues-raw/GaryNLOL/Rubber-Numbers?style=for-the-badge)](https://github.com/GaryNLOL/Rubber-Numbers/issues)
-[![badge-license](https://img.shields.io/github/license/GaryNLOL/Rubber-Numbers?style=for-the-badge)](https://github.com/GaryNLOL/Rubber-Numbers/blob/main/LICENSE)
-[![badge-contributors](https://img.shields.io/github/contributors/GaryNLOL/Rubber-Numbers?style=for-the-badge)](https://github.com/GaryNLOL/Rubber-Numbers/graphs/contributors)
-[![badge-codesize](https://img.shields.io/github/languages/code-size/GaryNLOL/Rubber-Numbers?style=for-the-badge)](https://github.com/GaryNLOL/Rubber-Numbers)
+<p align="center">
+<img alt="badge-lastcommit" src="https://img.shields.io/github/last-commit/GaryNLOL/Rubber-Numbers?style=for-the-badge">
+<img alt="badge-openissues" src="https://img.shields.io/github/issues-raw/GaryNLOL/Rubber-Numbers?style=for-the-badge">
+<img alt="badge-license" src="https://img.shields.io/github/license/GaryNLOL/Rubber-Numbers?style=for-the-badge">
+<img alt="badge-contributors" src="https://img.shields.io/github/contributors/GaryNLOL/Rubber-Numbers?style=for-the-badge">
+<img alt="badge-codesize" src="https://img.shields.io/github/languages/code-size/GaryNLOL/Rubber-Numbers?style=for-the-badge">
+</p>
 
 ## What is Rubber Numbers?
 Rubber Numbers is an arbitrary integer size support library for C++.
