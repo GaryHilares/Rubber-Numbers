@@ -71,14 +71,14 @@ RubberNumbers::RubberFloat::RubberFloat(const std::string& new_val)
     this->deleteTrailingZeroes();
 }
 
-std::string RubberNumbers::RubberFloat::to_string() const
+std::string RubberNumbers::RubberFloat::toString() const
 {
     return (is_negative ? "-":"") + integral_val + "." + decimal_val;
 }
 
 std::ostream& RubberNumbers::operator<<(std::ostream& stream, const RubberFloat& num)
 {
-    stream << num.to_string();
+    stream << num.toString();
     return stream;
 }
 
@@ -444,5 +444,5 @@ unsigned int RubberNumbers::RubberFloat::getPrecision()
 
 std::string std::to_string(const RubberNumbers::RubberFloat& num)
 {
-    return num.to_string();
+    return num.toString();
 }

@@ -50,7 +50,6 @@ namespace RubberNumbers
         {
             *this = RubberFloat(std::to_string(new_val));
         }
-        std::string to_string() const;
         bool operator==(const RubberFloat& num2) const;
         bool operator!=(const RubberFloat& num2) const;
         bool operator>(const RubberFloat& num2) const;
@@ -72,6 +71,7 @@ namespace RubberNumbers
         RubberFloat operator%(const RubberFloat& num2) const;
         RubberFloat operator%=(const RubberFloat& num2);
         RubberFloat abs() const;
+        std::string toString() const;
         static unsigned int setPrecision(unsigned int new_precision);
         static unsigned int getPrecision();
     };
