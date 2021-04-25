@@ -1,4 +1,5 @@
-# Rubber Numbers
+<h1 align="center">Rubber Numbers</h1>
+
 [![badge-lastcommit](https://img.shields.io/github/last-commit/GaryNLOL/Rubber-Numbers?style=for-the-badge)](https://github.com/GaryNLOL/Rubber-Numbers/commits/main)
 [![badge-openissues](https://img.shields.io/github/issues-raw/GaryNLOL/Rubber-Numbers?style=for-the-badge)](https://github.com/GaryNLOL/Rubber-Numbers/issues)
 [![badge-license](https://img.shields.io/github/license/GaryNLOL/Rubber-Numbers?style=for-the-badge)](https://github.com/GaryNLOL/Rubber-Numbers/blob/main/LICENSE)
