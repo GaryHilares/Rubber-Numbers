@@ -1,4 +1,19 @@
-## Contributing
+# Contributing Guidelines
+## Code of Conduct
+To contribute, you must follow our [Code of Conduct](https://github.com/GaryNLOL/Rubber-Numbers/blob/main/docs/CODE_OF_CONDUCT.md).
+Please be sure you have read it.
+
+## Scope
+Changes should be focused on the scope and purpose of the project.
+
+Contributions in Rubber Numbers should relate to:
+- Number handling.
+- Maths.
+- Graph visualization.
+
+Any contribution out of the scope should be strongly discussed and approved in the Discord server.
+
+## Ways to contribute
 ### Pull requests
 We encourage you to make pull requests. To do so, follow those steps:
 1. Clone the repository.
@@ -41,3 +56,9 @@ Include your OS.
 ## Notes:
 If there is something you must add do it here.
 ```
+
+### Assets, design and misc
+You can also contribute in other aspects of the project. To do so, follow these steps:
+1. Discuss your change in the channel of the Discord server that corresponds to the change you want to make.
+2. Create the change.
+3. Upload it either in the Discord server or add it to the repository by a Pull Request.
