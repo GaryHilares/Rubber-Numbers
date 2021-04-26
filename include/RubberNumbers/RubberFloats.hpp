@@ -41,7 +41,21 @@ namespace RubberNumbers
         bool is_negative;
         std::string integral_val;
         std::string decimal_val;
+        /** RubberFloat::isValidInput
+          *
+          * @param A std::string.
+          * @return True if the string contains a valid
+          *         value to initialize a RubberFloat,
+          *         false otherwise.
+          * @throws Never throws.
+          *
+          */
         static bool isValidInput(const std::string& str);
+        /** RubberFloat::deleteTrailingZeroes
+          *
+          * @throws Never throws.
+          *
+          */
         void deleteTrailingZeroes();
     public:
         /** RubberFloat::RubberFloat
@@ -54,7 +68,7 @@ namespace RubberNumbers
         /** RubberFloat::RubberFloat
           *
           * @param A std::string with a real value on it.
-          * @return A RubberFloat with the value given.
+          * @return A RubberFloat with the given value.
           * @throws Throws std::invalid_argument if the std::string
           *         has a value that is not a valid real number.
           *
@@ -63,12 +77,12 @@ namespace RubberNumbers
         /** RubberFloat::RubberFloat
           *
           * @param A type of floating point.
-          * @return A RubberFloat with the value given.
+          * @return A RubberFloat with the given value.
           * @throws Never throws.
           *
           */
-        template<typename float_type, typename = typename std::enable_if<std::is_floating_point<float_type>::value || std::is_integral<float_type>::value>::type>
-        RubberFloat(const float_type new_val)
+        template<typename FloatType, typename = typename std::enable_if<std::is_floating_point<FloatType>::value || std::is_integral<FloatType>::value>::type>
+        RubberFloat(const FloatType new_val)
         {
             *this = RubberFloat(std::to_string(new_val));
         }
