@@ -3,7 +3,8 @@
 To contribute, you must follow our [Code of Conduct](https://github.com/GaryNLOL/Rubber-Numbers/blob/main/docs/CODE_OF_CONDUCT.md).
 Please be sure you have read it.
 
-Additionally,  please follow our [C++ Style Guide](https://github.com/GaryNLOL/Style-Guides/blob/main/CPP%20Style%20Guide.md).
+Additionally, if you're going to contribute with code, please follow the [corresponding style guide](https://github.com/GaryNLOL/Style-Guides) of the language you will use.
+If there is not a style guide language of the language you want to use, please contact GaryNLOL by Gmail or Discord.
 
 ## Scope
 Changes should be focused on the scope and purpose of the project.
