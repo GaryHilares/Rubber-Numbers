@@ -300,7 +300,7 @@ namespace RubberNumbers
     /** operator>>
       *
       * @param A reference to a std::istream.
-      * @param A RubberFloat to stream.
+      * @param A RubberFloat to save the reading of the stream.
       * @return A reference to the std::istream
       *         after the operation.
       * @throws Never throws.
