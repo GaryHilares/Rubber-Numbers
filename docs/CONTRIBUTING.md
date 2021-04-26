@@ -29,12 +29,13 @@ Any contribution out of the scope should be strongly discussed and approved in t
 ## Ways to contribute
 ### Pull requests
 We encourage you to make pull requests. To do so, follow those steps:
-1. Clone the repository.
-2. Start the repository in your local computer.
-3. Think about one issue or feature you want to work on or go to the issues sections of GitHub and pick one.
-4. Commit your changes.
-5. Push your changes to your fork.
-6. Create a pull request.
+1. Think about one issue or feature you want to work on or go to the issues sections of GitHub and pick one.
+2. Clone the repository.
+3. Start the repository in your local computer.
+4. Solve the issue or add the feature you choosed.
+5. Commit the changes you've made.
+6. Push your changes to your fork.
+7. Create a pull request.
 That's it!
 
 ### Feature requests
@@ -74,4 +75,4 @@ If there is something you must add do it here.
 You can also contribute in other aspects of the project. To do so, follow these steps:
 1. Discuss your change in the channel of the Discord server that corresponds to the change you want to make.
 2. Create the change.
-3. Upload it either in the Discord server or add it to the repository by a Pull Request.
+3. Upload it either in the Discord server or add it to the repository by a Pull Request (see Pull Requests section).
