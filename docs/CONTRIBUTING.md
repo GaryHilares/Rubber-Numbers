@@ -1,7 +1,9 @@
 # Contributing Guidelines
-## Code of Conduct
+## Generalities
 To contribute, you must follow our [Code of Conduct](https://github.com/GaryNLOL/Rubber-Numbers/blob/main/docs/CODE_OF_CONDUCT.md).
 Please be sure you have read it.
+
+Additionally,  please follow our [C++ Style Guide](https://github.com/GaryNLOL/Style-Guides/blob/main/CPP%20Style%20Guide.md).
 
 ## Scope
 Changes should be focused on the scope and purpose of the project.
@@ -57,7 +59,7 @@ Include your OS.
 If there is something you must add do it here.
 ```
 
-### Assets, design and misc
+### Assets, design and miscellaneous
 You can also contribute in other aspects of the project. To do so, follow these steps:
 1. Discuss your change in the channel of the Discord server that corresponds to the change you want to make.
 2. Create the change.
