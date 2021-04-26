@@ -40,7 +40,7 @@ namespace RubberNumbers
     {
     private:
         std::string val;
-        bool isNegative;
+        bool is_negative;
         /** RubberInt::isValidInput
           *
           * @param A std::string.
@@ -73,7 +73,7 @@ namespace RubberNumbers
           *         has a value that is not a valid integer number.
           *
           */
-        RubberInt(const std::string& newVal);
+        RubberInt(const std::string& new_val);
         /** RubberInt::RubberInt
           *
           * @param A type of integer point.
@@ -82,9 +82,9 @@ namespace RubberNumbers
           *
           */
         template<typename IntType, typename = typename std::enable_if<std::is_integral<IntType>::value>::type>
-        RubberInt(const IntType newVal)
+        RubberInt(const IntType new_val)
         {
-            *this = RubberInt(std::to_string(newVal));
+            *this = RubberInt(std::to_string(new_val));
         }
         /** RubberInt::operator==
           *
