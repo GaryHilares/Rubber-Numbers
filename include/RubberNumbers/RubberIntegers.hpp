@@ -1,6 +1,9 @@
 /*******************************************************************************************
+ *
  * This file is part of Rubber Integers by GaryNLOL.
+ * Former part of Rubber Integers by GaryNLOL.
  * Special thanks to my family and µ's.
+ *
  *******************************************************************************************
  *
  * MIT License
