@@ -371,3 +371,17 @@ std::string std::to_string(const RubberNumbers::RubberInt& num)
 {
     return num.toString();
 }
+
+long long RubberNumbers::RubberInt::toLongLong() const
+{
+    if(*this > RubberInt(LONG_LONG_MAX))
+        throw std::invalid_argument("RubberInt::toLongLong(" + this->toString() + ")");
+    return std::strtoll(((this->is_negative ? "-":"") + this->val).c_str(),nullptr,10);
+}
+
+unsigned long long RubberNumbers::RubberInt::toUnsignedLongLong() const
+{
+    if(*this > RubberInt(ULONG_LONG_MAX))
+        throw std::invalid_argument("RubberInt::toUnsignedLongLong(" + this->toString() + ")");
+    return std::strtoull(((this->is_negative ? "-":"") + this->val).c_str(),nullptr,10);
+}

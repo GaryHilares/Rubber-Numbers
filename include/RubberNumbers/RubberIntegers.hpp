@@ -287,6 +287,22 @@ namespace RubberNumbers
           *
           */
         std::string toString() const;
+        /** RubberInt::toLongLong
+          *
+          * @return The value of this.
+          * @throws Throw std::invalid_argument if this is
+          *         greater than LONG_LONG_MAX.
+          *
+          */
+        long long toLongLong() const;
+        /** RubberInt::toUnsignedLongLong
+          *
+          * @return The value of this.
+          * @throws Throw std::invalid_argument if this is
+          *         greater than ULONG_LONG_MAX.
+          *
+          */
+        unsigned long long toUnsignedLongLong() const;
     };
     /** operator<<
       *
