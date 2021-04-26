@@ -14,19 +14,28 @@
 
 ## What is Rubber Numbers?
 Rubber Numbers is an arbitrary integer size support library for C++.
-
-### Features
-- Scalable.
-- Free.
-- Open-source.
-- Simple.
-- Very readable.
-
-### Platforms
-- Cross-platform.
-
-### Dependencies
-- None, it just uses the standard C++ library.
+<div>
+  <h3>Features</h3>
+  <ul>
+    <li>Scalable.</li>
+    <li>Free.</li>
+    <li>Open-source.</li>
+    <li>Simple.</li>
+    <li>Very readable.</li>
+  </ul>
+</div>
+<div>
+  <h3>Platforms</h3>
+  <ul>
+    <li>Cross-platform.</li>
+  </ul>
+</div>
+<div>
+  <h3>Dependencies</h3>
+  <ul>
+    <li>None.</li>
+  </ul>
+</div>
 
 ## Useful links
 - [C++ Style Guide](https://github.com/GaryNLOL/Style-Guides/blob/main/CPP%20Style%20Guide.md).
