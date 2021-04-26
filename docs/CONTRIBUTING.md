@@ -1,18 +1,28 @@
 # Contributing Guidelines
 ## Generalities
-To contribute, you must follow our [Code of Conduct](https://github.com/GaryNLOL/Rubber-Numbers/blob/main/docs/CODE_OF_CONDUCT.md).
-Please be sure you have read it.
+<p align="justify">
+As part of the open source community, we strongly think that contributing makes us to grow as a project, but also makes us more humans and makes each of us grow as a developer. 
+Moreover, contributing makes us able to progress to the future, helping each other to help others.
+Therefore, we are very glad that you want to contribute to this project and we want you to contribute on it.
+Because of this, and to make the environment more enjoyable for everyone, we implore you to read this document carefully.
+</p>
 
-Additionally, if you're going to contribute with code, please follow the [corresponding style guide](https://github.com/GaryNLOL/Style-Guides) of the language you will use.
-If there is not a style guide language of the language you want to use, please contact GaryNLOL by Gmail or Discord.
+<p align="justify">
+To contribute, you must follow our <!-- ProjectDependant --> <a href="https://github.com/GaryNLOL/Rubber-Numbers/blob/main/docs/CODE_OF_CONDUCT.md">Code of Conduct</a><!-- /ProjectDependant -->.
+Please be sure you have read it.
+Additionally, if you're going to contribute with code, please follow the <a href="https://github.com/GaryNLOL/Style-Guides">corresponding style guide</a> of the language you will use.
+If there is not a style guide language of the language you want to use, please let it know in the Discord server and we will answer you as soon as possible.
+</p>
 
 ## Scope
 Changes should be focused on the scope and purpose of the project.
 
+<!-- ProjectDependant -->
 Contributions in Rubber Numbers should relate to:
 - Number handling.
 - Maths.
 - Graph visualization.
+<!-- /ProjectDependant -->
 
 Any contribution out of the scope should be strongly discussed and approved in the Discord server.
 
