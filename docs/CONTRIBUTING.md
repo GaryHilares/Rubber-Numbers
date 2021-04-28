@@ -24,7 +24,7 @@ Contributions in Rubber Numbers should relate to:
 - Graph visualization.
 <!-- /ProjectDependant -->
 
-Any contribution out of the scope should be strongly discussed and approved in the Discord server.
+Any contribution out of this scope should be strongly discussed and approved in the Discord server.
 
 ## Ways to contribute
 ### Pull requests
