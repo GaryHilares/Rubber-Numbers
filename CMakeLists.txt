@@ -17,11 +17,11 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(hello_test src/tests.cpp src/RubberNumbers/RubberIntegers.cpp)
+add_executable(rubber_numbers src/tests.cpp src/RubberNumbers/RubberIntegers.cpp)
 target_link_libraries(
-  hello_test
-  GTest::gtest_main
+    rubber_numbers
+    GTest::gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(hello_test)
+gtest_discover_tests(rubber_numbers)
