@@ -100,6 +100,44 @@ TEST(EqualsOperator, SameValueDifferentSign)
     ASSERT_FALSE(RubberInt(-2147483648) == RubberInt(2147483648));
 }
 
+TEST(NotEqualsOperator, EqualPositiveIntegers)
+{
+    ASSERT_FALSE(RubberInt(5) != RubberInt(5));
+    ASSERT_FALSE(RubberInt(12) != RubberInt(12));
+    ASSERT_FALSE(RubberInt(1233123) != RubberInt(1233123));
+}
+
+TEST(NotEqualsOperator, DifferentPositiveIntegers)
+{
+    ASSERT_NE(RubberInt(5), RubberInt(12));
+    ASSERT_NE(RubberInt(12), RubberInt(32));
+    ASSERT_NE(RubberInt(1233123), RubberInt(234));
+}
+
+TEST(NotEqualsOperator, EqualNonPositiveIntegers)
+{
+    ASSERT_FALSE(RubberInt(0) != RubberInt(0));
+    ASSERT_FALSE(RubberInt(-5) != RubberInt(-5));
+    ASSERT_FALSE(RubberInt(-42) != RubberInt(-42));
+    ASSERT_FALSE(RubberInt(-12321) != RubberInt(-12321));
+}
+
+TEST(NotEqualsOperator, DifferentNonPositiveIntegers)
+{
+    ASSERT_NE(RubberInt(0), RubberInt(-14));
+    ASSERT_NE(RubberInt(-234), RubberInt(-231));
+    ASSERT_NE(RubberInt(-2), RubberInt(-1));
+    ASSERT_NE(RubberInt(-2147483648), RubberInt(0));
+}
+
+TEST(NotEqualsOperator, SameValueDifferentSign)
+{
+    ASSERT_NE(RubberInt(14), RubberInt(-14));
+    ASSERT_NE(RubberInt(234), RubberInt(-234));
+    ASSERT_NE(RubberInt(-2), RubberInt(2));
+    ASSERT_NE(RubberInt(-2147483648), RubberInt(2147483648));
+}
+
 int main(int argc, char** argv)
 {
     testing::InitGoogleTest(&argc, argv);
