@@ -1,8 +1,13 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
 #include <string>
 
 namespace RubberNumbers {
+class RubberDivisionByZero : public std::runtime_error {
+    RubberDivisionByZero();
+};
+
 class RubberInt {
 private:
     std::string val;
@@ -161,6 +166,7 @@ public:
      * @brief Computes the quotient of two RubberInts.
      * @param num2 A RubberInt to divide this one by.
      * @return A new RubberInt with the quotient of the two RubberInts.
+     * @throws RubberDivisionByZero if num2 is zero.
      */
     RubberInt operator/(const RubberInt& num2) const;
 
@@ -168,6 +174,7 @@ public:
      * @brief Computes the product of two RubberInts, modifying this one in place.
      * @param num2 A RubberInt to divide this one by.
      * @return A reference to this RubberInt, which has the quotient of the two RubberInts.
+     * @throws RubberDivisionByZero if num2 is zero.
      */
     RubberInt& operator/=(const RubberInt& num2);
 
@@ -175,6 +182,7 @@ public:
      * @brief Computes the remainder of two RubberInts.
      * @param num2 A RubberInt to divide this one by.
      * @return A new RubberInt with the remainder of the two RubberInts.
+     * @throws RubberDivisionByZero if num2 is zero.
      */
     RubberInt operator%(const RubberInt& num2) const;
 
@@ -182,6 +190,7 @@ public:
      * @brief Computes the remainder of two RubberInts, modifying this one in place.
      * @param num2 A RubberInt to divide this one by.
      * @return A reference to this RubberInt, which has the remainder of the two RubberInts.
+     * @throws RubberDivisionByZero if num2 is zero.
      */
     RubberInt& operator%=(const RubberInt& num2);
 

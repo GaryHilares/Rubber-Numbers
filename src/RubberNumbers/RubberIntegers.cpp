@@ -2,6 +2,11 @@
 #include <climits>
 #include <vector>
 
+RubberNumbers::RubberDivisionByZero::RubberDivisionByZero()
+    : std::runtime_error("Attempted to divide by zero.")
+{
+}
+
 bool RubberNumbers::RubberInt::isValidInput(const std::string& str)
 {
     if (str.size() == 0 || str == "-")
