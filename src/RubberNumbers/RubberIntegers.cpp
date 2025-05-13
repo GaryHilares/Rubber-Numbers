@@ -9,19 +9,22 @@ RubberNumbers::RubberDivisionByZero::RubberDivisionByZero()
 
 bool RubberNumbers::RubberInt::isValidInput(const std::string& str)
 {
-    if (str.size() == 0 || str == "-")
+    if (str.size() == 0 || str == "-") {
         return false;
-    for (std::string::size_type i = (str[0] == '-'); i < str.size(); i++)
-        if (!std::isdigit(str[i]))
+    }
+    for (std::string::size_type i = (str[0] == '-'); i < str.size(); i++) {
+        if (!std::isdigit(str[i])) {
             return false;
+        }
+    }
     return true;
 }
 
 void RubberNumbers::RubberInt::deleteTrailingZeroes()
 {
-    for (unsigned int i = 0; i < this->val.size(); i++) {
-        if (this->val[i] != '0' || i == this->val.size() - 1) {
-            this->val.erase(0, i);
+    for (unsigned int i = 0; i < m_value.size(); i++) {
+        if (m_value[i] != '0' || i == m_value.size() - 1) {
+            m_value.erase(0, i);
             break;
         }
     }
@@ -29,22 +32,23 @@ void RubberNumbers::RubberInt::deleteTrailingZeroes()
 
 RubberNumbers::RubberInt::RubberInt()
 {
-    this->is_negative = false;
-    this->val = "0";
+    m_isNegative = false;
+    m_value = "0";
 }
 
 RubberNumbers::RubberInt::RubberInt(const std::string& value)
 {
-    if (!isValidInput(value))
+    if (!isValidInput(value)) {
         throw std::invalid_argument("RubberInt::RubberInt(" + value + ")");
-    this->is_negative = (value[0] == '-');
-    this->val = value.substr(is_negative, value.size() - is_negative);
+    }
+    m_isNegative = (value[0] == '-');
+    m_value = value.substr(m_isNegative, value.size() - m_isNegative);
     this->deleteTrailingZeroes();
 }
 
 std::string RubberNumbers::RubberInt::toString() const
 {
-    return this->is_negative ? ("-" + this->val) : (this->val);
+    return m_isNegative ? ("-" + m_value) : (m_value);
 }
 
 std::ostream& RubberNumbers::operator<<(std::ostream& stream, const RubberInt& num)
@@ -63,7 +67,7 @@ std::istream& RubberNumbers::operator>>(std::istream& stream, RubberInt& num)
 
 bool RubberNumbers::RubberInt::operator==(const RubberInt& num2) const
 {
-    return (this->is_negative == num2.is_negative) && (this->val == num2.val);
+    return (m_isNegative == num2.m_isNegative) && (m_value == num2.m_value);
 }
 
 bool RubberNumbers::RubberInt::operator!=(const RubberInt& num2) const
@@ -73,42 +77,46 @@ bool RubberNumbers::RubberInt::operator!=(const RubberInt& num2) const
 
 bool RubberNumbers::RubberInt::operator>(const RubberInt& num2) const
 {
-    if (this->is_negative && !num2.is_negative) {
+    if (m_isNegative && !num2.m_isNegative) {
         return false;
     }
-    if (!this->is_negative && num2.is_negative) {
+    if (!m_isNegative && num2.m_isNegative) {
         return true;
     }
-    if (!this->is_negative && !num2.is_negative) {
-        if (this->val.size() > num2.val.size()) {
+    if (!m_isNegative && !num2.m_isNegative) {
+        if (m_value.size() > num2.m_value.size()) {
             return true;
         }
-        if (this->val.size() < num2.val.size()) {
+        if (m_value.size() < num2.m_value.size()) {
             return false;
         }
-        if (this->val.size() == num2.val.size()) {
-            for (std::string::size_type i = 0; i < this->val.size(); i++) {
-                if (this->val[i] > num2.val[i])
+        if (m_value.size() == num2.m_value.size()) {
+            for (std::string::size_type i = 0; i < m_value.size(); i++) {
+                if (m_value[i] > num2.m_value[i]) {
                     return true;
-                if (this->val[i] < num2.val[i])
+                }
+                if (m_value[i] < num2.m_value[i]) {
                     return false;
+                }
             }
             return false;
         }
     }
-    if (this->is_negative && num2.is_negative) {
-        if (this->val.size() > num2.val.size()) {
+    if (m_isNegative && num2.m_isNegative) {
+        if (m_value.size() > num2.m_value.size()) {
             return false;
         }
-        if (this->val.size() < num2.val.size()) {
+        if (m_value.size() < num2.m_value.size()) {
             return true;
         }
-        if (this->val.size() == num2.val.size()) {
-            for (std::string::size_type i = 0; i < this->val.size(); i++) {
-                if (this->val[i] > num2.val[i])
+        if (m_value.size() == num2.m_value.size()) {
+            for (std::string::size_type i = 0; i < m_value.size(); i++) {
+                if (m_value[i] > num2.m_value[i]) {
                     return false;
-                if (this->val[i] < num2.val[i])
+                }
+                if (m_value[i] < num2.m_value[i]) {
                     return true;
+                }
             }
             return false;
         }
@@ -130,12 +138,12 @@ bool RubberNumbers::RubberInt::operator<(const RubberInt& num2) const
 
 RubberNumbers::RubberInt RubberNumbers::RubberInt::operator+(const RubberInt& num2) const
 {
-    if (this->is_negative == num2.is_negative) {
+    if (m_isNegative == num2.m_isNegative) {
         std::string answer;
         int carry = 0;
-        for (int i = this->val.size() - 1, j = num2.val.size() - 1; i >= 0 || j >= 0 || carry != 0; i--, j--) {
-            int operand1 = (i >= 0) ? (this->val[i] - '0') : (0);
-            int operand2 = (j >= 0) ? (num2.val[j] - '0') : (0);
+        for (int i = m_value.size() - 1, j = num2.m_value.size() - 1; i >= 0 || j >= 0 || carry != 0; i--, j--) {
+            int operand1 = (i >= 0) ? (m_value[i] - '0') : (0);
+            int operand2 = (j >= 0) ? (num2.m_value[j] - '0') : (0);
             int result = operand1 + operand2 + carry;
             if (result >= 10) {
                 carry = 1;
@@ -146,23 +154,25 @@ RubberNumbers::RubberInt RubberNumbers::RubberInt::operator+(const RubberInt& nu
             answer += char(result + '0');
         }
         answer = std::string(answer.rbegin(), answer.rend());
-        return RubberInt(this->is_negative ? ("-" + answer) : (answer));
+        return RubberInt(m_isNegative ? ("-" + answer) : (answer));
     } else {
-        const RubberInt& positive = this->is_negative ? num2.val : this->val;
-        const RubberInt& negative = this->is_negative ? this->val : num2.val;
-        if (positive == negative)
+        const RubberInt& positive = m_isNegative ? num2.m_value : m_value;
+        const RubberInt& negative = m_isNegative ? m_value : num2.m_value;
+        if (positive == negative) {
             return RubberInt(0);
+        }
         std::string answer;
         int carry = 0;
         bool result_is_negative = negative > positive;
-        for (int i = positive.val.size() - 1, j = negative.val.size() - 1; i >= 0 || j >= 0 || carry != 0; i--, j--) {
-            int operand1 = (i >= 0) ? (positive.val[i] - '0') : 0;
-            int operand2 = (j >= 0) ? (negative.val[j] - '0') : 0;
+        for (int i = positive.m_value.size() - 1, j = negative.m_value.size() - 1; i >= 0 || j >= 0 || carry != 0; i--, j--) {
+            int operand1 = (i >= 0) ? (positive.m_value[i] - '0') : 0;
+            int operand2 = (j >= 0) ? (negative.m_value[j] - '0') : 0;
             int result;
-            if (result_is_negative)
+            if (result_is_negative) {
                 result = operand2 - (operand1 + carry);
-            else
+            } else {
                 result = operand1 - (operand2 + carry);
+            }
             if (0 > result) {
                 carry = 1;
                 result += 10;
@@ -179,7 +189,7 @@ RubberNumbers::RubberInt RubberNumbers::RubberInt::operator+(const RubberInt& nu
 RubberNumbers::RubberInt RubberNumbers::RubberInt::operator-(const RubberInt& num2) const
 {
     RubberInt inverted_sign_num2(num2);
-    inverted_sign_num2.is_negative = !inverted_sign_num2.is_negative;
+    inverted_sign_num2.m_isNegative = !inverted_sign_num2.m_isNegative;
     return *this + inverted_sign_num2;
 }
 
@@ -223,15 +233,16 @@ RubberNumbers::RubberInt& RubberNumbers::RubberInt::operator--()
 
 RubberNumbers::RubberInt RubberNumbers::RubberInt::operator*(const RubberInt& num2) const
 {
-    if (this->val == "0" || num2.val == "0")
+    if (m_value == "0" || num2.m_value == "0") {
         return RubberInt(0);
+    }
     std::vector<RubberInt> unitary_results;
-    for (int i = this->val.size() - 1; i >= 0; i--) {
+    for (int i = m_value.size() - 1; i >= 0; i--) {
         std::string unitary_answer;
         int carry = 0;
-        int operand1 = this->val[i] - '0';
-        for (int j = num2.val.size() - 1; j >= 0 || carry != 0; j--) {
-            int operand2 = (j >= 0) ? (num2.val[j] - '0') : (0);
+        int operand1 = m_value[i] - '0';
+        for (int j = num2.m_value.size() - 1; j >= 0 || carry != 0; j--) {
+            int operand2 = (j >= 0) ? (num2.m_value[j] - '0') : (0);
             int result = operand1 * operand2 + carry;
             carry = result / 10;
             result %= 10;
@@ -241,9 +252,10 @@ RubberNumbers::RubberInt RubberNumbers::RubberInt::operator*(const RubberInt& nu
         unitary_results.push_back(RubberInt(unitary_answer));
     }
     RubberInt answer;
-    for (unsigned int i = 0; i < unitary_results.size(); i++)
+    for (unsigned int i = 0; i < unitary_results.size(); i++) {
         answer += unitary_results[i];
-    answer.is_negative = (this->is_negative != num2.is_negative);
+    }
+    answer.m_isNegative = (m_isNegative != num2.m_isNegative);
     return answer;
 }
 
@@ -258,12 +270,12 @@ RubberNumbers::RubberInt RubberNumbers::RubberInt::operator/(const RubberInt& nu
     const RubberInt dividend = this->abs();
     const RubberInt divisor = num2.abs();
     RubberInt remainder;
-    remainder.val = "";
+    remainder.m_value = "";
     std::string cocient;
     unsigned int current_index = 0;
-    while (current_index < dividend.val.size()) {
-        if (current_index < dividend.val.size()) {
-            remainder.val += dividend.val[current_index];
+    while (current_index < dividend.m_value.size()) {
+        if (current_index < dividend.m_value.size()) {
+            remainder.m_value += dividend.m_value[current_index];
             current_index++;
         }
         if (divisor > remainder) {
@@ -277,7 +289,7 @@ RubberNumbers::RubberInt RubberNumbers::RubberInt::operator/(const RubberInt& nu
             cocient += char(counter + '0');
         }
     }
-    cocient = (this->is_negative == num2.is_negative ? "" : "-") + cocient;
+    cocient = (m_isNegative == num2.m_isNegative ? "" : "-") + cocient;
     return RubberInt(cocient);
 }
 
@@ -292,12 +304,12 @@ RubberNumbers::RubberInt RubberNumbers::RubberInt::operator%(const RubberInt& nu
     const RubberInt dividend = this->abs();
     const RubberInt divisor = num2.abs();
     RubberInt remainder;
-    remainder.val = "";
+    remainder.m_value = "";
     std::string cocient;
     unsigned int currentIndex = 0;
-    while (currentIndex < dividend.val.size()) {
-        if (currentIndex < dividend.val.size()) {
-            remainder.val += dividend.val[currentIndex];
+    while (currentIndex < dividend.m_value.size()) {
+        if (currentIndex < dividend.m_value.size()) {
+            remainder.m_value += dividend.m_value[currentIndex];
             currentIndex++;
         }
         if (remainder >= divisor) {
@@ -319,10 +331,11 @@ RubberNumbers::RubberInt& RubberNumbers::RubberInt::operator%=(const RubberInt& 
 
 RubberNumbers::RubberInt RubberNumbers::RubberInt::factorial() const
 {
-    if (this->is_negative)
-        throw std::invalid_argument("RubberInt::factorial(" + this->val + ")");
+    if (m_isNegative) {
+        throw std::invalid_argument("RubberInt::factorial(" + m_value + ")");
+    }
     RubberInt result = 1;
-    for (RubberInt i = this->val; i > 0; i--) {
+    for (RubberInt i = m_value; i > 0; i--) {
         result *= i;
     }
     return result;
@@ -330,9 +343,10 @@ RubberNumbers::RubberInt RubberNumbers::RubberInt::factorial() const
 
 RubberNumbers::RubberInt RubberNumbers::RubberInt::abs() const
 {
-    if (!this->is_negative)
+    if (!m_isNegative) {
         return *this;
-    return RubberInt(this->val);
+    }
+    return RubberInt(m_value);
 }
 
 std::string std::to_string(const RubberNumbers::RubberInt& num)
@@ -342,14 +356,16 @@ std::string std::to_string(const RubberNumbers::RubberInt& num)
 
 long long RubberNumbers::RubberInt::toLongLong() const
 {
-    if (*this > RubberInt(LONG_LONG_MAX))
+    if (*this > RubberInt(LONG_LONG_MAX)) {
         throw std::invalid_argument("RubberInt::toLongLong(" + this->toString() + ")");
-    return std::strtoll(((this->is_negative ? "-" : "") + this->val).c_str(), nullptr, 10);
+    }
+    return std::strtoll(((m_isNegative ? "-" : "") + m_value).c_str(), nullptr, 10);
 }
 
 unsigned long long RubberNumbers::RubberInt::toUnsignedLongLong() const
 {
-    if (*this > RubberInt(ULONG_LONG_MAX))
+    if (*this > RubberInt(ULONG_LONG_MAX)) {
         throw std::invalid_argument("RubberInt::toUnsignedLongLong(" + this->toString() + ")");
-    return std::strtoull(((this->is_negative ? "-" : "") + this->val).c_str(), nullptr, 10);
+    }
+    return std::strtoull(((m_isNegative ? "-" : "") + m_value).c_str(), nullptr, 10);
 }

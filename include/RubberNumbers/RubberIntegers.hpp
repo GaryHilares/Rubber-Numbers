@@ -3,15 +3,27 @@
 #include <stdexcept>
 #include <string>
 
+/**
+ * @brief Contains the classes of Rubber Numbers, which is a library to handle arbitrarily-sized numbers.
+ */
 namespace RubberNumbers {
+/**
+ * @brief Represents the error caused by trying to divide by 0.
+ */
 class RubberDivisionByZero : public std::runtime_error {
+    /**
+     * @brief Creates a new DivisionByZero error object.
+     */
     RubberDivisionByZero();
 };
 
+/**
+ * @brief Represents an arbitrarily-sized integer.
+ */
 class RubberInt {
 private:
-    std::string val;
-    bool is_negative;
+    std::string m_value;
+    bool m_isNegative;
 
     /**
      * @brief Checks if given string is valid to initialize a RubberInt.
@@ -215,12 +227,14 @@ public:
     /**
      * @brief Produces a long long with the value of this RubberInt.
      * @return A long long with the value represented by this RubberInt.
+     * @throw std::invalid_argument if value is not representable by a long long.
      */
     long long toLongLong() const;
 
     /**
      * @brief Produces an unsigned long long with the value of this RubberInt.
      * @return An unsigned long long with the value represented by this RubberInt.
+     * @throw std::invalid_argument if value is not representable by an unsigned long long.
      */
     unsigned long long toUnsignedLongLong() const;
 };
