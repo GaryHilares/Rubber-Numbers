@@ -277,6 +277,16 @@ TEST(DivisionOperator, ExactDivision)
     ASSERT_EQ(RubberInt(57) / RubberInt(19), RubberInt(3));
 }
 
+TEST(DivisionOperator, DivisionOfZeroByZero)
+{
+    ASSERT_THROW(RubberInt(0) / RubberInt(0), RubberDivisionByZero);
+}
+
+TEST(DivisionOperator, DivisionOfNonZeroByZero)
+{
+    ASSERT_THROW(RubberInt(1) / RubberInt(0), RubberDivisionByZero);
+}
+
 TEST(DivisionOperator, DivisionWithTruncation)
 {
     ASSERT_EQ(RubberInt(55) / RubberInt(28), RubberInt(1));
