@@ -6,6 +6,21 @@ project(my_project)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Start of codeblock based on Daniel Sieger's article at
+# https://danielsieger.com/blog/2022/03/06/code-coverage-for-cpp.html
+if(ENABLE_COVERAGE)
+  set(CMAKE_CXX_FLAGS "-O0 -coverage")
+  find_program(LCOV lcov REQUIRED)
+  find_program(GENHTML genhtml REQUIRED)
+
+  # add coverage target
+  add_custom_target(coverage
+    COMMAND ${LCOV} --directory . --capture --output-file coverage.info
+    COMMAND ${GENHTML} --demangle-cpp -o coverage coverage.info
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+endif()
+# End of codeblock based on Daniel Sieger's article
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
