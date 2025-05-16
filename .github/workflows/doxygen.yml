@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install Doxygen
-        run: apt update && sudo apt install -y doxygen
+        run: sudo apt update && sudo apt install -y doxygen
       - name: Build docs
         run: doxygen Doxyfile
       - name: Setup Pages
