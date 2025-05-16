@@ -34,7 +34,7 @@ jobs:
       - name: Install Doxygen
         run: sudo apt update && sudo apt install -y doxygen
       - name: Build docs
-        run: doxygen Doxyfile
+        run: mkdir -p build/doxygen && doxygen Doxyfile
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
