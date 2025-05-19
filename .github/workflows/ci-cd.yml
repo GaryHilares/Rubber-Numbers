@@ -1,12 +1,19 @@
 name: CI/CD on push of lightweight tag to main branch
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 on:
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
 jobs:
-  build:
+  ship:
     if: github.event.base_ref == 'refs/heads/main'
+    environment:
+      name: Documentation
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -16,8 +23,19 @@ jobs:
       run: cmake --build ./build/cmake/
     - name: Run tests
       run: ./build/cmake/rubber_numbers
-    - name: Configure CMake for release libraries
-      run: cmake -DBUILD_TYPE="release" -S . -B ./build/cmake/
+    - name: Install Doxygen
+      run: sudo apt update && sudo apt install -y doxygen
+    - name: Build docs
+      run: mkdir -p build/doxygen && doxygen Doxyfile
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './build/doxygen/html'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
     - name: Clear build files
       run: rm -rf ./build
     - name: Create release
