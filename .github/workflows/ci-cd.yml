@@ -45,14 +45,8 @@ jobs:
     - name: Clear build files
       run: rm -rf ./build
     - name: Create release
-      uses: actions/create-release@latest
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: ncipollo/release-action@v1
       with:
-        release_name: Release ${{ github.ref }}
-        tag_name: ${{ github.ref }}
         body: |
           "See CHANGELOG.md for this version's changes."
-        draft: false
-        prerelease: false
-      
+
