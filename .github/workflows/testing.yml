@@ -18,8 +18,8 @@ jobs:
       run: ./build/cmake/rubber_numbers
     - name: Configure CMake for release libraries
       run: cmake -DBUILD_TYPE="release" -S . -B ./build/cmake/
-    - name: Build release libraries
-      run: cmake --build ./build/cmake/
+    - name: Clear build files
+      run: rm -rf ./build
     - name: Create release
       uses: actions/create-release@latest
       env:
