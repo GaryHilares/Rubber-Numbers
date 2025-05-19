@@ -1,0 +1,21 @@
+name: C++ CI with CMake and GoogleTest
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Configure CMake
+      run: cmake -DBUILD_TYPE="release" -S . -B build/cmake/
+    - name: Build
+      run: cmake --build ./build/cmake/
+    - name: Run tests
+      run: ./build/cmake/rubber_numbers
