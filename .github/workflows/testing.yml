@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Configure CMake
-      run: mkdir -p ./build/cmake && cmake -DBUILD_TYPE="release" -S . -B ./build/cmake/
+      run: mkdir -p ./build/cmake && cmake -DBUILD_TYPE="testing" -S . -B ./build/cmake/
     - name: Build
       run: cmake --build ./build/cmake/
     - name: Run tests
