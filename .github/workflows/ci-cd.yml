@@ -1,13 +1,19 @@
 name: CI/CD on push of lightweight tag to main branch
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 on:
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   ship:
     if: github.event.base_ref == 'refs/heads/main'
