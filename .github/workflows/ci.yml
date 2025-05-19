@@ -3,8 +3,6 @@ name: CI on pushes (except to main) and PRs
 on:
   push:
     branches-ignore: [ 'main' ]
-  pull_request:
-    branches: [ '*' ]
 jobs:
   test:
     runs-on: ubuntu-latest
