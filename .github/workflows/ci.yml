@@ -1,0 +1,16 @@
+name: CI on pushes (except to main)
+
+on:
+  push:
+    branches-ignore: [ 'main' ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Configure CMake for test executable
+      run: mkdir -p ./build/cmake && cmake -DBUILD_TYPE="testing" -S . -B ./build/cmake/
+    - name: Build test executable
+      run: cmake --build ./build/cmake/
+    - name: Run tests
+      run: ./build/cmake/rubber_numbers

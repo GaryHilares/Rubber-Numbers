@@ -48,5 +48,3 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         body: See CHANGELOG.md for this version's changes.
-        
-
