@@ -267,6 +267,9 @@ RubberNumbers::RubberInt& RubberNumbers::RubberInt::operator*=(const RubberInt& 
 
 RubberNumbers::RubberInt RubberNumbers::RubberInt::operator/(const RubberInt& num2) const
 {
+    if (num2.toString() == "0") {
+        throw RubberDivisionByZero();
+    }
     const RubberInt dividend = this->abs();
     const RubberInt divisor = num2.abs();
     RubberInt remainder;

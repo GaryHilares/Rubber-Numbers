@@ -11,6 +11,7 @@ namespace RubberNumbers {
  * @brief Represents the error caused by trying to divide by 0.
  */
 class RubberDivisionByZero : public std::runtime_error {
+public:
     /**
      * @brief Creates a new DivisionByZero error object.
      */
