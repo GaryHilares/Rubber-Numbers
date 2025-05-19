@@ -1,4 +1,4 @@
-name: CI on pushes (except to main) and PRs
+name: CI on pushes (except to main)
 
 on:
   push:
