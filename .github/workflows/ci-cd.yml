@@ -1,12 +1,12 @@
-name: CI/CD on tagged push to main branch
+name: CI/CD on push of lightweight tag to main branch
 
 on:
   push:
-    branches: [ "main" ]
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
 jobs:
   build:
+    if: github.event.base_ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
