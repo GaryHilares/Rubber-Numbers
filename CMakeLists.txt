@@ -7,6 +7,11 @@ project(my_project)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Default value for BUILD_TYPE variable
+if(NOT BUILD_TYPE)
+  set(BUILD_TYPE "release")
+endif()
+
 # Target specific config
 if(BUILD_TYPE STREQUAL "testing")
   set(CMAKE_BUILD_TYPE "Debug")
