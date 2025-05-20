@@ -1,6 +1,5 @@
-# Based on GoogleTest quickstart guide: http://google.github.io/googletest/quickstart-cmake.html
 cmake_minimum_required(VERSION 3.14)
-project(my_project)
+project(RubberNumbers VERSION 1.0.0)
 
 # General C++ standard config
 # Note: GoogleTest requires at least C++14
@@ -52,6 +51,7 @@ FetchContent_MakeAvailable(googletest)
 
 # Compile and link if necessary
 if (INCLUDE_TESTS)
+    # Based on GoogleTest quickstart guide: http://google.github.io/googletest/quickstart-cmake.html
     enable_testing()
     add_executable(rubber_numbers src/tests.cpp src/RubberNumbers/RubberIntegers.cpp)
 
